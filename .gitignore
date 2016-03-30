@@ -1,0 +1,23 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+npm-debug.log
+node_modules
+
+.idea
+.sass-cache
+
+!.gitignore
+!.git*
+!.editorconfig
+!.jshintrc
+!.npmignore
+!.travis.yml

@@ -1,0 +1,22 @@
+{
+  "name": "react-editable-input",
+  "version": "0.0.1",
+  "description": "react editable input component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/staticbass/react-editable-input.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "staticbass",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/staticbass/react-editable-input/issues"
+  },
+  "homepage": "https://github.com/staticbass/react-editable-input#readme"
+}
