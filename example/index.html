@@ -22,29 +22,26 @@
 
         function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-        function onSave(value) {
-            var _this = this;
+        var ExampleComponent = function (_React$Component) {
+            _inherits(ExampleComponent, _React$Component);
 
-            setTimeout(function () {
-                _this.setState({ text: value });
-            }, 1500);
-        }
+            function ExampleComponent(props) {
+                _classCallCheck(this, ExampleComponent);
 
-        var Example = function (_React$Component) {
-            _inherits(Example, _React$Component);
+                var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ExampleComponent).call(this, props));
 
-            function Example(props) {
-                _classCallCheck(this, Example);
-
-                var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Example).call(this, props));
-
-                _this2.state = {
+                _this.state = {
                     text: 'admin'
                 };
-                return _this2;
+                return _this;
             }
 
-            _createClass(Example, [{
+            _createClass(ExampleComponent, [{
+                key: 'onSave',
+                value: function onSave(value) {
+                    this.setState({ text: value });
+                }
+            }, {
                 key: 'render',
                 value: function render() {
                     return React.createElement(
@@ -57,10 +54,10 @@
                 }
             }]);
 
-            return Example;
+            return ExampleComponent;
         }(React.Component);
 
-        ReactDOM.render(React.createElement(Example, null), document.getElementById('app'));
+        ReactDOM.render(React.createElement(ExampleComponent, null), document.getElementById('app'));
     </script>
 </body>
 </html>
