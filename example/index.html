@@ -44,11 +44,12 @@
             }, {
                 key: 'render',
                 value: function render() {
+
                     return React.createElement(
                             'div',
                             { className: 'example' },
                             React.createElement(EditableInput.default, {
-                                onSave: onSave.bind(this),
+                                onSave: this.onSave.bind(this),
                                 text: this.state.text })
                     );
                 }
