@@ -47,7 +47,7 @@ ReactDOM.render(<ExampleComponent />, document.getElementById('app'));
 ### Props
 
 **onSave** <br>
-Function that called when user clicks submit button. (required)
+Function that is called when user clicks submit button. (required)
 
 **text** <br>
 String that is displayed. (required)
