@@ -1,6 +1,6 @@
 {
   "name": "react-editable-input",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react editable input component",
   "scripts": {
     "prepublish": "webpack"
