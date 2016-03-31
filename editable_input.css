@@ -1,0 +1,64 @@
+
+.editable-input-component {
+    position: relative;
+}
+
+.editable-input-component .editable-input-text {
+    height: 30px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.editable-input-component .editable-input {
+    width: 100%;
+    padding: 5px 38px 5px 5px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    outline: none;
+}
+
+.editable-input-component .editable-input-submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 0 5px 5px 0;
+    color: #FFF;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    outline: none;
+}
+
+.editable-input-component .editable-input-submit:disabled {
+    background: #3279B6;
+    color: #EDEDED
+}
+
+.editable-input-component .editable-input-submit:disabled:hover {
+    background: #3279B6;
+    cursor: default;
+}
+
+.editable-input-component .editable-input:read-only {
+    border-color: #3279B6;
+    background: #EDEDED
+}
+
+.editable-input-component .editable-input-submit:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
