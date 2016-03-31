@@ -120,11 +120,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'onSave',
 	        value: function onSave(e) {
+	            var _this3 = this;
+
 	            e.preventDefault();
 
 	            var val = this.refs.input.value;
-	            this.setState({ loading: true });
-	            this.props.onSave(val);
+	            this.setState({ loading: true }, function () {
+	                _this3.props.onSave(val);
+	            });
 	        }
 	    }, {
 	        key: 'render',

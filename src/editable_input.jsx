@@ -34,8 +34,9 @@ class EditableInput extends React.Component {
         e.preventDefault();
 
         const val = this.refs.input.value;
-        this.setState({ loading: true });
-        this.props.onSave(val);
+        this.setState({ loading: true }, () => {
+            this.props.onSave(val);
+        });
     }
 
 
