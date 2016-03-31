@@ -10,6 +10,8 @@ $ npm i -S react-editable-input
 
 ### Example
 
+![alt tag](http://s16.postimg.org/oq5d2dktx/edtiable_input.png)
+
 ```javascript
 import EditableInput from 'react-editable-input';
 
