@@ -15,7 +15,8 @@ $ npm i -S react-editable-input
 ```javascript
 import EditableInput from 'react-editable-input';
 
-// or var EditableInput = require('react-editable-input').default;
+// old style
+var EditableInput = require('react-editable-input').default;
 
 class ExampleComponent extends React.Component {
   
@@ -23,7 +24,8 @@ class ExampleComponent extends React.Component {
     super(props);
     this.state = {
       text: 'admin'
-    }
+    };
+    this.onSave = this.onSave.bind(this);
   }
   
   onSave(value) {
@@ -34,7 +36,19 @@ class ExampleComponent extends React.Component {
     return (
       <div className="example">
       
-        <EditableInput onSave={this.onSave.bind(this)} text={this.state.text} />
+        <EditableInput onSave={this.onSave} text={this.state.text} />
+        
+        // with bootstrap
+        <div className="form-inline">
+            <EditableInput
+                text={this.state.text}
+                btnClassName="btn btn-default"
+                inputClassName="form-control"
+                onSave={this.onSave} />
+        </div>
+        
+        // stateless
+        <EditableInput text='stateless' />
         
       </div>  
     )
@@ -43,14 +57,15 @@ class ExampleComponent extends React.Component {
 
 ReactDOM.render(<ExampleComponent />, document.getElementById('app'));
 ```
+**If prop ``onSave`` is not passed component is considered to be stateless.**
 
 ### Props
 
-**onSave** <br>
-Function that is called when user clicks submit button. (required)
-
 **text** <br>
 String that is displayed. (required)
+
+**onSave** <br>
+Function that is called when user clicks submit button. First argument is a new value. Use this function to handle state change.
 
 **textClassName** <br>
 ``ClassName`` prop of text element. Default ``editable-input-text``
@@ -69,7 +84,7 @@ Type of input elemet. Default ``text``
 
 ### Styles
 
-Add default styles in your ``index.html``.
+Add styles in your ``index.html``.
 ```html
 <link rel="stylesheet" href="../node_modules/react-editable-input/editable_input.css">
 ```
