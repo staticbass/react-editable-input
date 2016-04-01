@@ -54,7 +54,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -82,17 +82,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EditableInput).call(this, props));
 
-	        _this.state = {
-	            edit: false,
-	            loading: false
-	        };
+	        var state = { edit: false };
+
+	        _this.props.onSave ? state = Object.assign(state, { loading: false }) : state = Object.assign(state, { text: _this.props.text });
+
+	        _this.state = state;
+
 	        _this.toggleEdit = _this.toggleEdit.bind(_this);
 	        _this.onSave = _this.onSave.bind(_this);
+	        _this.changeText = _this.changeText.bind(_this);
 	        return _this;
 	    }
 
 	    _createClass(EditableInput, [{
-	        key: 'componentWillReceiveProps',
+	        key: "componentWillReceiveProps",
 	        value: function componentWillReceiveProps() {
 	            if (this.state.loading) {
 	                this.setState({ loading: false });
@@ -100,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 	    }, {
-	        key: 'toggleEdit',
+	        key: "toggleEdit",
 	        value: function toggleEdit() {
 	            var _this2 = this;
 
@@ -110,7 +113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                (function () {
 	                    var input = _this2.refs.input;
 
-	                    input.value = _this2.props.text;
+	                    input.value = _this2.props.onSave ? _this2.props.text : _this2.state.text;
 	                    setTimeout(function () {
 	                        return input.focus();
 	                    }, 0);
@@ -118,7 +121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 	    }, {
-	        key: 'onSave',
+	        key: "onSave",
 	        value: function onSave(e) {
 	            var _this3 = this;
 
@@ -130,34 +133,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 	    }, {
-	        key: 'render',
+	        key: "changeText",
+	        value: function changeText(e) {
+	            e.preventDefault();
+
+	            var text = this.refs.input.value;
+	            this.setState({ text: text });
+	            this.toggleEdit();
+	        }
+	    }, {
+	        key: "render",
 	        value: function render() {
 	            var props = this.props;
 	            var _state = this.state;
 	            var edit = _state.edit;
 	            var loading = _state.loading;
+	            var text = _state.text;
 
+	            var stateless = !!this.props.onSave;
 	            return _react2.default.createElement(
-	                'div',
-	                { className: 'editable-input-component' },
+	                "div",
+	                { className: "editable-input-component" },
 	                _react2.default.createElement(
-	                    'form',
+	                    "form",
 	                    null,
 	                    _react2.default.createElement(
-	                        'div',
-	                        { type: props.inputType,
+	                        "div",
+	                        { ref: "text",
+	                            type: props.inputType,
 	                            onClick: this.toggleEdit,
 	                            style: { display: edit ? 'none' : 'block' },
 	                            className: props.textClassName },
-	                        props.text
+	                        stateless ? props.text : text
 	                    ),
 	                    _react2.default.createElement(
-	                        'div',
+	                        "div",
 	                        { style: { display: edit ? 'block' : 'none' } },
-	                        _react2.default.createElement('input', { ref: 'input', type: 'text', className: props.inputClassName, readOnly: loading }),
+	                        _react2.default.createElement("input", { ref: "input", type: "text", className: props.inputClassName, readOnly: loading }),
 	                        _react2.default.createElement(
-	                            'button',
-	                            { disabled: loading, onClick: this.onSave, type: 'submit', className: props.btnClassName },
+	                            "button",
+	                            { disabled: loading, onClick: stateless ? this.onSave : this.changeText, type: "submit", className: props.btnClassName },
 	                            props.btnTitle
 	                        )
 	                    )
@@ -178,7 +193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	EditableInput.propTypes = {
-	    onSave: _react2.default.PropTypes.func.isRequired,
+	    onSave: _react2.default.PropTypes.func,
 	    text: _react2.default.PropTypes.string.isRequired
 	};
 

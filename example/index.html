@@ -12,7 +12,7 @@
     <script src="https://fb.me/react-dom-0.14.8.js"></script>
     <script src="../index.js"></script>
     <script>
-        'use strict';
+        "use strict";
 
         var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -37,20 +37,22 @@
             }
 
             _createClass(ExampleComponent, [{
-                key: 'onSave',
+                key: "onSave",
                 value: function onSave(value) {
                     this.setState({ text: value });
                 }
             }, {
-                key: 'render',
+                key: "render",
                 value: function render() {
 
                     return React.createElement(
-                            'div',
-                            { className: 'example' },
+                            "div",
+                            { className: "example" },
                             React.createElement(EditableInput.default, {
                                 onSave: this.onSave.bind(this),
-                                text: this.state.text })
+                                text: this.state.text }),
+                            React.createElement("hr", null),
+                            React.createElement(EditableInput.default, { text: "stateless" })
                     );
                 }
             }]);

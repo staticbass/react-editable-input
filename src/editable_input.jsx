@@ -5,12 +5,18 @@ class EditableInput extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            edit: false,
-            loading: false
-        };
+
+        let state = { edit: false };
+
+        this.props.onSave ?
+            (state = Object.assign(state, { loading: false })) :
+            (state = Object.assign(state, { text: this.props.text }));
+
+        this.state = state;
+
         this.toggleEdit = this.toggleEdit.bind(this);
         this.onSave = this.onSave.bind(this);
+        this.changeText = this.changeText.bind(this);
     }
 
     componentWillReceiveProps() {
@@ -25,7 +31,7 @@ class EditableInput extends React.Component {
         this.setState({ edit });
         if(edit) {
             const { input } = this.refs;
-            input.value = this.props.text;
+            input.value = this.props.onSave ? this.props.text : this.state.text;
             setTimeout(() => input.focus(), 0);
         }
     }
@@ -39,24 +45,34 @@ class EditableInput extends React.Component {
         });
     }
 
+    changeText(e) {
+        e.preventDefault();
+
+        const text = this.refs.input.value;
+        this.setState({ text });
+        this.toggleEdit();
+    }
+
 
     render() {
         const props = this.props;
-        const { edit, loading } = this.state;
+        const { edit, loading, text } = this.state;
+        const stateless = !!this.props.onSave;
         return (
             <div className="editable-input-component">
 
                 <form>
-                    <div type={props.inputType}
+                    <div ref="text"
+                         type={props.inputType}
                          onClick={this.toggleEdit}
                          style={{display: edit ? 'none' : 'block'}}
-                         className={props.textClassName}>{props.text}</div>
+                         className={props.textClassName}>{stateless ? props.text : text}</div>
 
                     <div style={{display: edit ? 'block' : 'none'}}>
 
                         <input ref="input" type="text" className={props.inputClassName} readOnly={loading}/>
 
-                        <button disabled={loading} onClick={this.onSave} type="submit" className={props.btnClassName}>{props.btnTitle}</button>
+                        <button disabled={loading} onClick={stateless ? this.onSave : this.changeText} type="submit" className={props.btnClassName}>{props.btnTitle}</button>
                     </div>
                 </form>
 
@@ -75,7 +91,7 @@ EditableInput.defaultProps = {
 };
 
 EditableInput.propTypes = {
-    onSave: React.PropTypes.func.isRequired,
+    onSave: React.PropTypes.func,
     text: React.PropTypes.string.isRequired
 };
 
