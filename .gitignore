@@ -21,3 +21,5 @@ node_modules
 !.jshintrc
 !.npmignore
 !.travis.yml
+
+.DS_Store
